@@ -1,0 +1,14 @@
+package lojas.desconto;
+
+import java.math.BigDecimal;
+
+import lojas.Pedido;
+
+public class CalculadoraDeDesconto {
+ public BigDecimal calcular(Pedido pedido) {
+	 if (pedido.getvalor().compareTo(new BigDecimal("500")) >0) {
+		 return pedido.getValor().multiply(new BigDecimal("0,1"));
+	 }
+	 
+ }
+}

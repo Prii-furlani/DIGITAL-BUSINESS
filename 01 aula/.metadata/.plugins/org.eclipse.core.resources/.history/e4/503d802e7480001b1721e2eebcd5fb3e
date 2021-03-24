@@ -1,0 +1,16 @@
+package lojas.imposto;
+
+import java.math.BigDecimal;
+
+import lojas.Pedido;
+
+public class TestaImposto {
+	public static void main(String[] args) {
+		CalculadoraDeImposto caluladoraDeImposto = new CalduladoraDeImpostos();
+		Pedido pedido = new Pedido(new BigDecimal("100"));
+		
+		BigDecimal imposto = caluladoraDeImposto.calcular(pedido, "ICMS");
+		
+		System.out.println(imposto);
+}
+}

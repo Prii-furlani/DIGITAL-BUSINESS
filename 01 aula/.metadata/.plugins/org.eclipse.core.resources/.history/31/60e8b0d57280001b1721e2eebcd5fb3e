@@ -1,0 +1,15 @@
+package lojas.imposto;
+
+import java.math.BigDecimal;
+
+public class CalculadoraDeImposto {
+	public BigDecimal calcular(Pedido pedido, String imposto) {
+	 if(imposto.equals("ICMS")) {
+		 return pedido.getValor().multiply(new BigDecimal("0.1"));
+	 }else if (imposto.equals("IPI")) {
+		 return pedido.getValor().multiply(new BigDecimal("0.05"));
+	 }
+	 return BigDecimal.ZERO;
+	}
+
+}

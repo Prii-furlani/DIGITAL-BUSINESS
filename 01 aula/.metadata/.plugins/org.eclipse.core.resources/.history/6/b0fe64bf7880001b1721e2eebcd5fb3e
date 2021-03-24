@@ -1,0 +1,12 @@
+package lojas.desconto;
+
+import java.math.BigDecimal;
+
+public class CalculadoraDeDesconto {
+ public BigDecimal calcular(Pedido pedido) {
+	 if (pedidoo.getvalor().compareTo(new BigDEcimal("500")) >0) {
+		 return pedido.getValor().multiply(new BigDecimal("0,1"));
+	 }
+	 
+ }
+}

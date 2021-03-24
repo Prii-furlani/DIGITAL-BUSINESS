@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\Priscila\OneDrive\Fiap\DIGITAL BUSINESS ENABLEMENT\01 aula\.metadata\.plugins\org.eclipse.jdt.core
+2112246634.index

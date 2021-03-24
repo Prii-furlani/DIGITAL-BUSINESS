@@ -1,0 +1,15 @@
+package lojas.imposto;
+
+import java.math.BigDecimal;
+
+import lojas.Pedido;
+
+public class CalculadoraDeImposto {
+	
+	private Imposto imposto;
+	
+	
+	public BigDecimal calcular(Pedido pedido) {
+	 return imposto.calcular(pedido);
+	}
+}

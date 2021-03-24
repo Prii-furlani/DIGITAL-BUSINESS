@@ -1,0 +1,5 @@
+package lojas;
+
+public class Pedido {
+
+}
