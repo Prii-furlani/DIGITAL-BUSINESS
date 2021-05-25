@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<!-- Messagens de Error na página -->
+		<p:messages id="messages">
+			<p:autoUpdate />
+		</p:messages>
+		<!-- FORM -->
+		<h:form class="card-form">
+			<!-- CARD -->
+			<p:card style="width: 25em">
+				<h2 style="padding: 0 1rem; margin-top: 0;">New Setup</h2>
+				<p:panelGrid columns="2" layout="grid"
+					columnClasses="ui-g-4, ui-g-8">
+
+					<p:outputLabel value="Name" for="name" />
+					<p:inputText id="name" value="#{setupBean.setup.nome}"
+						required="true">
+						<f:ajax event="blur" render="messages" />
+					</p:inputText>
+
+					<p:outputLabel value="Description" for="description" />
+					<p:inputTextarea id="description"
+						value="#{setupBean.setup.descricao}"
+						validatorMessage="Descrição: O texto deve estar entre 25 e 200"
+						required="true">
+						<f:validateLength maximum="200" minimum="25" />
+						<f:ajax event="blur" render="messages" />
+					</p:inputTextarea>
+
+					<p:outputLabel value="Price" for="price" />
+					<p:inputText id="price" value="#{setupBean.setup.preco}"
+						required="true">
+						<f:validateDoubleRange minimum="1" />
+						<f:ajax event="blur" render="messages" />
+					</p:inputText>
+
+					<p:row>
+						<p:commandButton icon="pi pi-check" value="Save"
+							action="#{setupBean.save}">
+							<f:ajax execute="@form" render="form-setups" />
+						</p:commandButton>
+						<p:commandButton icon="pi pi-times" value="Cancel"
+							styleClass="ui-button-secondary" />
+					</p:row>
+				</p:panelGrid>
+			</p:card>
+			<!-- CARD -->
+		</h:form>
+		<!-- FORM -->
+
+		<div class="card">
+			<h:form id="form-setups">
+
+				<p:dataTable id="setups" var="setup" value="#{setupBean.setups}"
+					rowKey="#{setup.codigo}" selectionMode="single">
+					<f:facet name="header">
+		                Lista de Setups
+		            </f:facet>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{setup.nome}" />
+					</p:column>
+					
+					<p:column headerText="Preço">
+						<h:outputText value="#{setup.preco}" />
+					</p:column>
+					
+				</p:dataTable>
+
+				<p:contextMenu for="setups">
+					<p:menuitem value="Delete" update="setups" icon="pi pi-times"
+						action="#{setupBean.deletar}" />
+				</p:contextMenu>
+
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>
